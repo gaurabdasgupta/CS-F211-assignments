@@ -90,7 +90,13 @@ int main()
     for(int k=0;k<n;k++)
     {
         for(int l=0;l<n;l++)
-            printf("%d ", a[k][l]);
+        {
+            if(a[k][l]<=9)
+                printf("%d  ", a[k][l]);
+            else
+                printf("%d ", a[k][l]);
+        }
+           
         printf("\n");
     }
 

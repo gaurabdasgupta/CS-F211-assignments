@@ -19,10 +19,19 @@ int dir(char d, int* q, int* j)
 
 bool isPrime(int n)
 {
-    for(int i=2;i<n;i++)
-        if(n%i==0)
-            return false;
-    return true;
+    if (n <= 1)  
+        return false; 
+    if (n <= 3)  
+        return true; 
+
+    if (n%2 == 0 || n%3 == 0) 
+        return false; 
+  
+    for (int i=5; i*i<=n; i=i+6) 
+        if (n%i == 0 || n%(i+2) == 0) 
+           return false; 
+  
+    return true; 
 }
 
 int nextPrime(int n)
@@ -38,8 +47,7 @@ int nextPrime(int n)
 int main()
 {
     int n;
-    // scanf("%d",&n);
-    n=5;
+    scanf("%d",&n);
     int a[n][n];
 
     int mid = n/2, k = 1;
@@ -121,7 +129,12 @@ int main()
     for(int k=0;k<n;k++)
     {
         for(int l=0;l<n;l++)
-            printf("%d ", a[k][l]);
+        {
+            if(a[k][l]<=9)
+                printf("%d  ", a[k][l]);
+            else
+                printf("%d ", a[k][l]);
+        }
         printf("\n");
     }
 
