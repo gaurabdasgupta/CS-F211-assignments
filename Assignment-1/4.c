@@ -97,7 +97,7 @@ void findKthSL(int k)
     slnode* s;
     f = head;
     s = head;
-    f(i,0,k)
+    f(i,0,k+1)
     s=s->next;
 
     while(s!=null)
@@ -119,7 +119,20 @@ void findKthDL(int k)
 
 void findKthCL(int k)
 {
+    slnode* f;
+    slnode* s;
+    f = headCL;
+    s = headCL;
+    f(i,0,k+1)
+        s=s->next;
 
+    while(s!=headCL)
+    {
+        f=f->next;
+        s=s->next;
+    }
+
+    printf("%d\n", f->val);
 }
 
 int main()
@@ -151,7 +164,7 @@ int main()
             printf("Value of K has exceeded the limit");
         else
             findKthSL(k);
-        printList(head);
+        // printList(head);
     }
     else if(strcmp(type,"double")==0)
     {
@@ -176,7 +189,7 @@ int main()
             printf("Value of K has exceeded the limit");
         else
             findKthSL(k);       
-        printListDL(headDL);
+        // printListDL(headDL);
     }
     else if(strcmp(type,"circular")==0)
     {
@@ -197,8 +210,8 @@ int main()
                 len++;
         }
         len++;
-        findKthDL(k); // TODO: circular find kth node
-        printListDL(headCL);        
+        findKthCL(k); // TODO: circular find kth node
+        // printList(headCL);       
     }
     else
         return 0;

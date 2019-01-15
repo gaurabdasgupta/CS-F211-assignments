@@ -6,6 +6,13 @@
 #define f(i,x,y) for(int i=x;i<y;i++)
 #define null NULL
 
+void swapNodes(int* x, int* y)
+{
+    int tmp = *y;
+    *y = *x;
+    *x = tmp;
+}
+
 typedef struct Node{
     struct Node* next;
     int val;
@@ -73,50 +80,38 @@ void delete(int x)
 
 void swap(int x)
 {
-    node* prev = head;
-    node* curr = head->next;
-    while(curr!=null&&curr->next!=null)
+    node* trv = head;
+    while(trv->next!=null)
     {
-        if(curr->val==x)
+        if(trv->val==x)
         {
-            node* tmp = curr->next;
-            curr->next = prev;
-            prev->next = tmp;
-            head = curr;
-            return;
+            swapNodes(&trv->val,&trv->next->val);
+            break;
         }
-        if(curr->next->val==x)
-        {
-            node* tmp = curr->next->next;
-            prev->next = curr->next;
-            curr->next->next = curr;
-            curr->next = tmp;
-            return;
-        }
-        prev = prev->next;
-        curr = curr->next;
+        trv = trv->next;
     }
+
 }
 
 
 
 int main()
 {
-    int n;
-    scanf("%d", &n);
-    int t;
+    int t, len=0;
     scanf("%d", &t);
     head = createNode(t);
-
-    f(i,0,n-1)
-    {
-        int x;
-        scanf("%d", &x);
+    for(int i=0;;i++)
+    {        
+        int x;char c;
+        scanf("%d%c", &x, &c);
         push(head, x);
+        if(c=='\n')
+            break;
+        else
+            len++;
     }
-    
-    delete(3);
-    printList(head);
+    // delete(3);
+    // printList(head);
     swap(3);
     printList(head);
 }
