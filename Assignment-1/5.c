@@ -114,6 +114,7 @@ int main()
         scanf("%d", &x);
         push(head, x);
     }
+    
     delete(3);
     printList(head);
     swap(3);

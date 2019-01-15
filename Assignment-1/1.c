@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+
 #define d(x) printf("%d", x);
 #define f(i,x,y) for(int i=x;i<y;i++)
 

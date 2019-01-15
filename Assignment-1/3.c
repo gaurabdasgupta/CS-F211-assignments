@@ -3,8 +3,6 @@
 #define d(x) printf("%d", x);
 #define f(i,x,y) for(int i=x;i<y;i++)
 
-int pr;
-
 int dir(char d, int* q, int* j)
 {
     if(d=='u')
@@ -38,7 +36,7 @@ int nextPrime(int n)
 {
     while(true)
     {
-        n++;
+        n++;    
         if(isPrime(n))
             return n;
     }
@@ -54,7 +52,7 @@ int main()
     int i=mid, j=mid;
     int rc=1,uc=1,lc=2,dc=2;   
     int f = 0;
-    pr = 2;
+    int pr = 2;
 
     a[i][j]=pr;
 

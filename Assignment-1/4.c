@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include<string.h>
 
 #define d(x) printf("%d", x);
 #define f(i,x,y) for(int i=x;i<y;i++)
@@ -17,11 +18,25 @@ typedef struct dlNode{
     int val;
 }dlnode;
 
+
+
 slnode* head;
 dlnode* headDL;
 dlnode* tailDL;
+slnode* headCL;
+slnode* tailCL;
 
-void printList(dlnode* head)
+void printList(slnode* head)
+{
+    while(head!=null)
+    {
+        printf("%d ", head->val);
+        head = head->next;
+    }
+    printf("\n");
+}
+
+void printListDL(dlnode* head)
 {
     while(head!=null)
     {
@@ -66,6 +81,16 @@ void pushDL(int x)
 
 }
 
+void pushCL(int x, int i)
+{
+    slnode* tmp = createSLNode(x);
+    if(i==0)
+        headCL->next=tmp;
+    tailCL->next = tmp;
+    tmp->next = headCL;
+    tailCL = tmp;
+}
+
 void findKthSL(int k)
 {
     slnode* f;
@@ -92,22 +117,89 @@ void findKthDL(int k)
     printf("%d\n", trv->val);
 }
 
+void findKthCL(int k)
+{
+
+}
 
 int main()
 {
-    int n,k;
-    scanf("%d %d", &n, &k);
-    int t;
-    scanf("%d", &t);
-    // head = createSLNode(t);
-    headDL = createDLNode(t);
-    f(i,0,n-1)
+    char type[100];
+    int k;
+    scanf("%s",type);
+    scanf("%d", &k);
+
+    if(strcmp(type,"single")==0)
     {
-        int x;
-        scanf("%d", &x);
-        pushDL(x);
+        int t;char l;
+        int len=0;
+        scanf("%d%c", &t,&l);
+        head = createSLNode(t);
+        while(1)
+        {
+            int nd;
+            char c;
+            scanf("%d%c", &nd, &c);
+            pushSL(head, nd);
+            if(c=='\n')
+                break;
+            else
+                len++;
+        }
+        len++;
+        if(k>len)
+            printf("Value of K has exceeded the limit");
+        else
+            findKthSL(k);
+        printList(head);
     }
-    findKthDL(k);
-    printList(headDL);
-    
+    else if(strcmp(type,"double")==0)
+    {
+        int t;char l;
+        int len=0;
+        scanf("%d%c", &t,&l);
+        headDL = createDLNode(t);
+        tailDL = headDL;
+        while(1)
+        {
+            int nd;
+            char c;
+            scanf("%d%c", &nd, &c);
+            pushDL(nd);
+            if(c=='\n')
+                break;
+            else
+                len++;
+        }
+        len++;
+        if(k>len)
+            printf("Value of K has exceeded the limit");
+        else
+            findKthSL(k);       
+        printListDL(headDL);
+    }
+    else if(strcmp(type,"circular")==0)
+    {
+        int t;char l;
+        int len=0;
+        scanf("%d%c", &t,&l);
+        headCL = createSLNode(t);
+        tailCL = headCL;
+        for(int i=0;;i++)
+        {
+            int nd;
+            char c;
+            scanf("%d%c", &nd, &c);
+            pushCL(nd,i);
+            if(c=='\n')
+                break;
+            else
+                len++;
+        }
+        len++;
+        findKthDL(k); // TODO: circular find kth node
+        printListDL(headCL);        
+    }
+    else
+        return 0;
 }
