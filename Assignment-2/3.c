@@ -54,8 +54,14 @@ int main()
     memset(g,0,sizeof(g));
     f(i,0,nodesNum)
         f(j,0,nodesNum)
-            scanf("%d",&g[i][j]);
-    // f(i,0,nodesNum){ f(j,0,nodesNum) printf("%d ",g[i][j]); printf("\n");}
+        {
+            int val;
+            scanf("%d",&val);
+            g[i][j] = val;
+            g[j][i] = val;
+        }
+
+    f(i,0,nodesNum){ f(j,0,nodesNum) printf("%d ",g[i][j]); printf("\n");}
 
     isBipartite(g) ? printf("Yes") : printf("No");
 
