@@ -84,5 +84,5 @@ int main()
     char* str = (char*)malloc(MAX*sizeof(char));
     scanf("%[^\n]%*c", str);
     char* f = encode(str);
-    printf("%s", decode(f));
+    printf("%s", f);
 }

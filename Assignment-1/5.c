@@ -86,14 +86,13 @@ void swap(int x)
         if(trv->val==x)
         {
             swapNodes(&trv->val,&trv->next->val);
-            break;
+            return;
         }
         trv = trv->next;
     }
+    printf("Swapping Not Possible\n");
 
 }
-
-
 
 int main()
 {
@@ -112,6 +111,6 @@ int main()
     }
     // delete(3);
     // printList(head);
-    swap(3);
+    swap(5);
     printList(head);
 }
