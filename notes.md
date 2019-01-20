@@ -23,10 +23,12 @@
 
 - [ ] **Problem 1**
 	- num of min weight paths
+    - dir vs undir cycle detection
 - [ ] **Problem 2**
     - shortest path - max of them
-- [ ] **Problem 3**
-	- bipartite 
+- [x] **Problem 3**
+	- bipartite
+    - testing 
 - [ ] **Problem 4**
     - 
 - [ ] **Problem 5**
@@ -37,3 +39,5 @@
 	- min dist
 - [ ] **Problem 8**
 	- dfs with counter
+- [ ] **Problem 9**
+	- 

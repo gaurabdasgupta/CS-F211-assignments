@@ -11,23 +11,20 @@ int nodeNum, edgeNum;
 
 bool isCyclicUtil(int g[nodeNum][nodeNum],int pos, bool visited[nodeNum], bool stack[nodeNum])
 {
-    if(visited[pos]==false)
-    {    
-        visited[pos] = true;
-        stack[pos] = true;
+   
+    visited[pos] = true;
+    stack[pos] = true;
 
-        f(i,0,nodeNum)
+    f(i,0,nodeNum)
+    {
+        if(g[pos][i])
         {
-            if(g[pos][i])
-            {
-                d(i)
-                if(!visited[i] && isCyclicUtil(g,i, visited, stack))
-                    return true;
-                else if(stack[i])
-                    return true;
-            }
+            d(i)
+            if(!visited[i] && isCyclicUtil(g,i, visited, stack))
+                return true;
+            else if(stack[i])
+                return true;
         }
-
     }
 
     stack[pos] = false;
