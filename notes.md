@@ -35,9 +35,11 @@
     - form custom graph - numComponents
 - [ ] **Problem 6**
     - form graph - numComponents - remove and count
-- [ ] **Problem 7**
+- [x] **Problem 7**
 	- min dist
-- [ ] **Problem 8**
-	- dfs with counter
+    - testcases
+- [x] **Problem 8**
+	- bfs with counter
+    - testcases
 - [ ] **Problem 9**
 	- 
