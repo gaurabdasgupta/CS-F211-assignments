@@ -24,8 +24,9 @@
 - [ ] **Problem 1**
 	- num of min weight paths
     - dir vs undir cycle detection
-- [ ] **Problem 2**
+- [x] **Problem 2**
     - shortest path - max of them
+    - check dia(exact defn)
 - [x] **Problem 3**
 	- bipartite
     - testing 
@@ -43,3 +44,8 @@
     - testcases
 - [ ] **Problem 9**
 	- 
+
+
+## Global
+- check border cases
+    - what if not possible

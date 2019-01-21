@@ -9,7 +9,7 @@
 #define f2(i,x,y) for(int i=x;i<=y;i++)
 #define null NULL
 
-int g[100][100], uni[100], vis[100], dist[100], parent[100], n,cnt, result[100];
+int g[100][100], uni[100], vis[100], dist[100], parent[100], n,diameter, result[100];
 
 typedef struct Node{
     int val;
@@ -72,12 +72,20 @@ bool isEmpty(q* q)
     return false;
 }
 
-void bfs(q* q, int s, int t)
+void addEdge(int u, int v)
 {
+    g[u][v] = 1;
+    g[v][u] = 1;
+}
+
+bool bfs(q* q, int s, int dest)
+{
+    // init
     memset(vis,0,sizeof(vis));
     memset(parent,-1,sizeof(parent));
     f1(i,0,n)
         dist[i]=INT_MAX;
+    
     vis[s] = 1;
     dist[s] = 0;
     enq(q,s);
@@ -93,32 +101,56 @@ void bfs(q* q, int s, int t)
                 {
                     vis[i] = 1;
                     dist[i] = dist[s]+1;
-                    if(dist[i]==t){
-                        printf("%d ",i);
-                        cnt+=1  ;
-                        // d(cnt)
-                    }
+                    parent[i] = s;
                     enq(q, i);
+                    if(i == dest)
+                        return true;
                 }
             }
         }
     }
+
+    return false;
 }
 
-void addEdge(int u, int v)
+void printShortestDistance(int u, int v)
 {
-    g[u][v] = 1;
-    g[v][u] = 1;
+    q* w = createQ();
+    printf("Shortest Path for %d and %d:\n", u, v);
+    if(!bfs(w,u,v))
+    {
+        printf("Self Loop\n");
+        return;
+    }
+
+    int crawl = v;
+    int path[n];
+    memset(path,-1,sizeof(path));
+    int i=0;
+    // path[i++] = crawl;
+    while(parent[crawl]!=-1)
+    {
+        path[i++] = crawl;
+        crawl = parent[crawl];
+    }
+
+    printf("%d ",u);
+    for(int j=i-1;j>=0;j--)
+        printf("%d ", path[j]);
+    
+    printf("\n");
+
+    if(dist[v]>diameter)
+        diameter = dist[v];
 }
 
 int main()
 {
-    cnt=0;
-    q* w = createQ();
-    int t;
+    diameter=INT_MIN;
     scanf("%d", &n);
     memset(g,0,sizeof(g));
     memset(result,0,sizeof(result));
+
     // f2(i,1,n)
     // {
     //     int u,v;
@@ -126,14 +158,26 @@ int main()
     //     g[u][v] = 1;
     //     g[v][u] = 1;
     // }
-    scanf("%d",&t);
-    // d(t)
-    addEdge(0,1);
-    addEdge(1,2);
-    addEdge(2,3);
-    addEdge(1,4);
+    // scanf("%d",&t);
 
-    f1(i,0,n)
-        bfs(w,i,t);
-    d(cnt);
+    addEdge( 0, 1); 
+    addEdge( 0, 3); 
+    addEdge( 1, 2); 
+    addEdge( 3, 4); 
+    addEdge( 3, 7); 
+    addEdge( 4, 5); 
+    addEdge( 4, 6); 
+    addEdge( 4, 7); 
+    addEdge( 5, 6); 
+    addEdge( 6, 7);
+
+    f1(i,0,n)  
+    {
+        f1(j,0,n)
+        {
+            if(i>=j)
+                printShortestDistance(i,j);
+        }    
+    } 
+    printf("Diameter of the given graph: %d", diameter);
 }
