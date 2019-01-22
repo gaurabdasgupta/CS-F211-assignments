@@ -21,9 +21,12 @@
 
 ## Assignment 2
 
-- [ ] **Problem 1**
+- [x] **Problem 1**
 	- num of min weight paths
     - dir vs undir cycle detection
+    - what if no cycle
+    - multiple min weight cycles
+    - cycle with more than 3 nodes
 - [x] **Problem 2**
     - shortest path - max of them
     - check dia(exact defn)
@@ -34,7 +37,7 @@
     - 
 - [ ] **Problem 5**
     - form custom graph - numComponents
-- [ ] **Problem 6**
+- [x] **Problem 6**
     - form graph - numComponents - remove and count
 - [x] **Problem 7**
 	- min dist
