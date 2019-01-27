@@ -73,9 +73,7 @@ int main()
 
     int ans = INT_MIN;
     f2(i,1,n)
-    {   
         ans = max(ans,maxSumSub(n,a,i));
-    }
 
     d(ans);
 }

@@ -34,7 +34,7 @@
 	- bipartite
     - testing 
 - [ ] **Problem 4**
-    - 
+    - correctness of idNum assigning method
 - [ ] **Problem 5**
     - form custom graph - numComponents
 - [x] **Problem 6**
@@ -45,7 +45,7 @@
 - [x] **Problem 8**
 	- bfs with counter
     - testcases
-- [ ] **Problem 9**
+- [x] **Problem 9**
 	- 
 
 
