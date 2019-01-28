@@ -12,6 +12,7 @@ typedef struct Node{
     struct Node* next;
     struct Node* prev;
     int c;
+    int col;
 }node;
 
 node* head;
@@ -76,6 +77,16 @@ void printList(node* head)
     printf("\n");
 }
 
+void printListColor(node* head)
+{
+    while(head!=null)
+    {
+        printf("%d ", head->col);
+        head = head->next;
+    }
+    printf("\n");
+}
+
 void printCycle(node* start)
 {
     node* nd = start;
@@ -119,6 +130,40 @@ void detectCycle(node* start)
     }
 }
 
+void colorList(node* head)
+{
+    node* nd = head;
+    int available[100];
+    nd->col = 1;
+    available[1]=0;
+    nd = nd->next;
+    int prevCol = 1;
+    while(nd!=null)
+    {  
+        for(int i=0;i<100;i++)
+            available[i]=1;
+
+        available[prevCol] = 0;
+        available[nd->prev->col] = 0;
+
+        int currCol;
+        for(int i=1;i<100;i++)
+        {
+            if(available[i]==1)
+            {
+                currCol = i;
+                break;
+            }
+        }
+
+        nd->col = currCol;
+        prevCol = nd->col;
+        nd=nd->next;
+    }
+
+    printListColor(head);
+}
+
 int main()
 {
     int x,y,z;
@@ -135,5 +180,28 @@ int main()
 
     printList(head);
     detectCycle(head->next);
+    colorList(head);
 
 }
+
+//testcases:
+
+/*
+1 0 2
+2 1 3
+3 2 4
+4 2 5
+5 4 0q
+*/
+
+/*
+1 0 2
+2 1 3
+3 1 4
+4 2 5
+5 3 6
+6 5 7
+7 3 0q
+*/
+
+
