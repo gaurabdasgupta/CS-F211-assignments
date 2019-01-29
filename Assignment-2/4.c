@@ -119,7 +119,7 @@ void detectCycle(node* start)
                 printf("%d", visited[i]);
             printf("\n");
             printCycle(nd->prev);
-            nd = start;
+            nd = start; // resetd
             continue;
         }
         else{
@@ -184,17 +184,15 @@ int main()
 
 }
 
-//testcases:
-
 /*
+testcases:
+
 1 0 2
 2 1 3
 3 2 4
 4 2 5
 5 4 0q
-*/
 
-/*
 1 0 2
 2 1 3
 3 1 4
@@ -202,6 +200,7 @@ int main()
 5 3 6
 6 5 7
 7 3 0q
+
 */
 
 
