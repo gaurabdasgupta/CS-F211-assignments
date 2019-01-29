@@ -12,20 +12,21 @@
 #define min(a,b) (a<b?a:b) 
 
 int n;
+int g[1000][1000];
 
 void printPath(int paths[n][n], int v, int u)
 {
     if(paths[v][u]==v)
     {
-        printf("%d", paths[v][u]);
+        printf("%d ", paths[v][u]);
         return;
     }
     
     printPath(paths, v, paths[v][u]);
-    printf("%d", paths[v][u]);
+    printf("%d ", paths[v][u]);
 }
 
-void findMinCycle(int g[n][n])
+void findMaxDiameter()
 {
     int dist[n][n];
     int paths[n][n];
@@ -40,58 +41,75 @@ void findMinCycle(int g[n][n])
                 paths[i][j]=-1;
         }
     } 
-
+    int ans = INT_MIN;
     f1(k,0,n)
         f1(i,0,n)
             f1(j,0,n)
                 if(dist[i][k] + dist[k][j] < dist[i][j])
                 {
                     dist[i][j] = dist[i][k] + dist[k][j];
+                    if(dist[i][j]>ans)
+                        ans = dist[i][j];
                     paths[i][j] = paths[k][j];
                 }
-    
-    int ans = INT_MAX;
-    int ansNode=0;
-    f1(i,0,n)
-    {
-        if(dist[i][i]<ans)
-        {
-            ans = dist[i][i];
-            ansNode = i;
-        }
-    }
-    
+
     printf("%d\n", ans);
 
     f1(i,0,n)
     {
         f1(j,0,n)
-            printf("%d ",paths[i][j]);
-        printf("\n");
+        {
+            if(dist[i][j]==ans)
+            {
+                printf("%d %d\n", i, j);
+                printPath(paths,i,j);
+                printf("%d",j);
+                printf("\n");
+            }       
+        }
     }
+}
 
-    printPath(paths,ansNode,ansNode);
+void add_edge(int x, int y)
+{
+    g[x][y]=1;
+    g[y][x]=1;
 }
 
 int main()
 {
-    scanf("%d", &n);
-
-    int g[n][n];
-
+    // scanf("%d", &n);
+    n=8;
+    add_edge( 0, 1); 
+    add_edge( 0, 3); 
+    add_edge( 1, 2); 
+    add_edge( 3, 4); 
+    add_edge( 3, 7); 
+    add_edge( 4, 5); 
+    add_edge( 4, 6); 
+    add_edge( 4, 7); 
+    add_edge( 5, 6); 
+    add_edge( 6, 7); 
     f1(i,0,n)
     {
         f1(j,0,n)
         {
-            int x;
-            scanf("%d", &x);
-            if(x!=0)
-                g[i][j]=x;
-            else
-                g[i][j]=inf;
-
+            if(g[i][j]==0)
+            {
+                // if(i!=j)
+                    g[i][j]=inf;
+                // else
+                //     g[i][j]=0;
+            }
         }
     }
 
-    findMinCycle(g);
+    // f1(i,0,n)
+    // { 
+    //     f1(j,0,n) 
+    //         printf("%d ", g[i][j]); 
+    //     printf("\n");
+    // }
+
+    findMaxDiameter();
 }

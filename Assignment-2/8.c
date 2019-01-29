@@ -8,6 +8,7 @@
 #define f1(i,x,y) for(int i=x;i<y;i++)
 #define f2(i,x,y) for(int i=x;i<=y;i++)
 #define null NULL
+#define qs 10
 
 int g[100][100], uni[100], vis[100], dist[100], parent[100], n,cnt, result[100];
 
@@ -43,7 +44,6 @@ void enq(q* qu, int x)
     node* t = createNode(x);
     if(qu->rear == null)
     {
-        // d(121212)
         qu->front = qu->rear = t;
         return;
     }
@@ -66,7 +66,6 @@ node* deq(q* q)
 
 bool isEmpty(q* q)
 {
-    // d(222)
     if(q->rear==null)
         return true;
     return false;
@@ -96,9 +95,8 @@ void bfs(q* q, int s, int t)
                     if(dist[i]==t){
                         printf("%d ",i);
                         cnt+=1  ;
-                        // d(cnt)
                     }
-                    enq(q, i);
+                    enq(q,i);
                 }
             }
         }
@@ -134,6 +132,6 @@ int main()
     addEdge(1,4);
 
     f1(i,0,n)
-        bfs(w,i,t);
-    d(cnt);
+        bfs(w, i,t);
+    printf("%d\n", cnt);
 }

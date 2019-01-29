@@ -21,54 +21,57 @@ void dfs(int x)
     }
 }
 
-// void addEdge(int x, int y)
-// {
-//     g[x][y]=1;
-//     g[y][x]=1;
-// }
+void addEdge(int x, int y)
+{
+    g[x][y]=1;
+    g[y][x]=1;
+}
 
 int main()
 {
     int setV[1000];
     memset(setV,-1,sizeof(setV));
     int delta;
-    // n=5;
-    // addEdge(1, 0);
-    // addEdge(2, 3);
-    // addEdge(3, 4);
-    scanf("%d %d", &n, &delta);
-    f(i,0,n)
-    {
-        int v,f;
-        scanf("%d %d", &v, &f);
-        setV[v] = f;
-    }
+    n=5;
+    addEdge(1, 0);
+    addEdge(2, 3);
+    addEdge(3, 4);
+    // scanf("%d %d", &n, &delta);
+    // f(i,0,n)
+    // {
+    //     int v,f;
+    //     scanf("%d %d", &v, &f);
+    //     setV[v] = f;
+    // }
 
-    f(i,0,n)
-        f(j,0,n)
-            if(setV[i]!=-1&&setV[j]!=-1&&abs(setV[i]-setV[j]>=delta))
-            {
-                g[i][j]=1;
-                g[j][i]=1;  
-            }
+    // f(i,0,n)
+    //     f(j,0,n)
+    //         if(setV[i]!=-1&&setV[j]!=-1&&abs(setV[i]-setV[j]>=delta))
+    //         {
+    //             g[i][j]=1;
+    //             g[j][i]=1;  
+    //         }
+
     f(i,0,n){ f(j,0,n) printf("%d ",g[i][j]); printf("\n");}
+
     for(int i=0;i<n;i++)
     {
         if(!vis[i])
         {
             dfs(i);
             int compMat[1000][1000];
-            memset(compMat,0,sizeof(compMat));
+            // memset(compMat,0,sizeof(compMat));
             f(i,0,n) f(j,0,n) compMat[i][j]= g[i][j];
 
             for(int i=0;i<n;i++)
             {
-                if(componentV[i]==0)
+                if(componentV[i]==0) //whichever nodes are not set, uska rows and columns are set to -1
                 {
                     for(int j=0;j<n;j++)
-                        compMat[i][j]=-1;
-                    for(int j=0;j<n;j++)
-                        compMat[j][i]=-1;
+                    {                        
+                        compMat[i][j]=-1; 
+                        compMat[j][i]=-1; 
+                    }
                 }
             }
 
@@ -87,6 +90,4 @@ int main()
             printf("-----\n");
         }
     }
-
-
 }
