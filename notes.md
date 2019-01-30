@@ -27,15 +27,16 @@
     - what if no cycle
     - multiple min weight cycles
     - cycle with more than 3 nodes
+    - -1 appearing?
 - [x] **Problem 2**
     - shortest path - max of them
     - check dia(exact defn)
 - [x] **Problem 3**
 	- bipartite
     - testing 
-- [ ] **Problem 4**
+- [x] **Problem 4**
     - correctness of idNum assigning method
-- [ ] **Problem 5**
+- [x] **Problem 5**
     - form custom graph - numComponents
 - [x] **Problem 6**
     - form graph - numComponents - remove and count
@@ -45,8 +46,9 @@
 - [x] **Problem 8**
 	- bfs with counter
     - testcases
+    - mostly final
 - [x] **Problem 9**
-	- 
+	- meh
 
 
 ## Global

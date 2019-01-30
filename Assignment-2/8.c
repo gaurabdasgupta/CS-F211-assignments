@@ -94,7 +94,7 @@ void bfs(q* q, int s, int t)
                     dist[i] = dist[s]+1;
                     if(dist[i]==t){
                         printf("%d ",i);
-                        cnt+=1  ;
+                        cnt+=1;
                     }
                     enq(q,i);
                 }

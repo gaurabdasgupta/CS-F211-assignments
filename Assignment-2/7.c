@@ -19,7 +19,7 @@ typedef struct Node{
 typedef struct Queue{
     node* front;
     node* rear;
-    int size;   
+    int size;
 }q;
 
 node* createNode(int x)
@@ -113,7 +113,7 @@ int main()
     int m;
     scanf("%d", &n);
     memset(g,0,sizeof(g));
-    memset(result,0,sizeof(result));
+    memset(result,0,sizeof(result));    
     // f2(i,1,n)
     // {
     //     int u,v;
