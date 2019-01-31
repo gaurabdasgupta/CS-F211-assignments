@@ -55,7 +55,7 @@ int maxSumSub(int N, int mat[][N], int k)
             { 
                 max_sum = sum; 
                 pos = &(mat[i][j]); 
-            } 
+            }
         } 
     } 
 
