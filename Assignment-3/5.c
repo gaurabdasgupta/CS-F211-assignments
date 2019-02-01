@@ -12,7 +12,7 @@ int calcArea(int i, int j)
         return 0;
 
     vis[i][j]=1;
-    return (1+calcArea(i-1,j)+calcArea(i+1,j)+calcArea(i,j-1)+calcArea(i,j+1));
+    return (1+calcArea(i-1,j) + calcArea(i+1,j) + calcArea(i,j-1) + calcArea(i,j+1));
 }
 
 int main()

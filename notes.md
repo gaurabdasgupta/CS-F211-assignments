@@ -50,7 +50,23 @@
 - [x] **Problem 9**
 	- meh
 
+## Assignment 3
 
-## Global
-- check border cases
-    - what if not possible
+- [ ] **Problem 1**
+    - 
+- [ ] **Problem 2**
+    - 
+- [ ] **Problem 3**
+    - 
+- [ ] **Problem 4**
+    - 
+- [x] **Problem 5**
+    - testing
+- [ ] **Problem 6**
+    - 
+- [ ] **Problem 7**
+    - 
+- [ ] **Problem 8**
+    - 
+- [ ] **Problem 9**
+	- 
