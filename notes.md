@@ -56,8 +56,8 @@
     - 
 - [ ] **Problem 2**
     - 
-- [ ] **Problem 3**
-    - 
+- [x] **Problem 3**
+    - testing
 - [ ] **Problem 4**
     - 
 - [x] **Problem 5**
