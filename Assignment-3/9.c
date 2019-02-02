@@ -5,7 +5,7 @@
 #define f(i,x,y) for(int i=x;i<y;i++)
 #define inf 9999
 
-int g[1000][1000], n;
+int g[1000][1000], n, seen[1000];
 
 void fw()
 {
@@ -24,9 +24,9 @@ void fw()
             if(dist[i][j]<=1)
             {
                 f=1;
-                seen[i]=1;
                 if(!seen[i])
-                printf("%d,",i);
+                    printf("%d,",i);
+                seen[i]=1;
             }
     if(!f)
         printf("No");
@@ -40,7 +40,7 @@ int main()
         f(j,0,n)
         {
             if(i==j)
-                g[i][j]=0;
+                g[i][j] = 0;
             else
                 g[i][j] = inf;
         } 
