@@ -6,14 +6,13 @@
 
 int n, vis[1000][1000], m[1000][1000];
 
-// todo: include diagonal cases
 int calcArea(int i, int j)
 {
     if(i<0||i>=n||j<0||j>=n||vis[i][j]||m[i][j]==0)
         return 0;
 
     vis[i][j]=1;
-    return (1+calcArea(i-1,j) + calcArea(i+1,j) + calcArea(i,j-1) + calcArea(i,j+1));
+    return (1+calcArea(i-1,j) + calcArea(i+1,j) + calcArea(i,j-1) + calcArea(i,j+1)+calcArea(i-1,j-1)+calcArea(i-1,j+1)+calcArea(i+1,j-1)+calcArea(i+1, j+1));
 }
 
 int main()
