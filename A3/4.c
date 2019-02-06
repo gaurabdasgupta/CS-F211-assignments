@@ -9,18 +9,24 @@
 
 int g[100][100], n;
 int vis[100];
-int posX, posY, x, y;
+int posX, posY, x, y, foundX;
+
 
 void dfs(int v, int k, int pos)
 {
     vis[v] = 1;
     if(v==x)
+    {
         posX = pos;
+        foundX = 1;
+    }
+
     if(v==y)
         posY = pos;
+
     if(v==k)
         return;
-    printf("%d ", v);
+    // printf("%d ", v);
     for(int i=1;i<=n;i++)
         if(g[v][i]&&!vis[i])
             dfs(i, k, pos+1);
@@ -37,22 +43,27 @@ int main()
         g[x][y] = 1;
         g[y][x] = 1;
     }
-
+    printf("\n");
     for(int i=1;i<=n;i++)
     {
         for(int j=1;j<=n;j++)
         {
             if(i!=j)
             {
-                printf("%d %d::", i, j);
+               
                 dfs(i,j,0);
-                printf("\n");
-                printf("%d %d\n", posX, posY);
-                if(posX>=posY)
+                // printf("%d\n", j);
+                // printf("%d %d\n", posX, posY);
+                if(posX>=posY||(!foundX))
+                {
+                    printf("%d %d\n", i, j);
                     cnt++;
+                }
+
                 memset(vis,0,sizeof(vis));
                 posX = 0;
                 posY = 0;
+                foundX = 0;
             }
         }
     }
