@@ -11,38 +11,25 @@ void swap(char *x, char *y)
     *y = temp; 
 }
 
-bool isPalindrome(char* s)
+bool isPalindrome(char* str, int s, int e)
 {
-    int i=0, j = strlen(s)-1;
-    int f=0;
-    while(1)
-    {
-        if(i==j)
-            return true;
-        else if((j-i)==1&&s[i]==s[j])
-            return true;
-        else if((j-i)==1&&s[i]!=s[j])
-            break;
-        
-        if(s[i]==s[j])
-        {
-            i++;
-            j--;
-        }
-        else
-            break;
-
-
-    }
-
-    return false;
+    if(s==e)
+        return true;
+    
+    if(str[s]!=str[e])
+        return false;
+    
+    if(s<e+1)
+        return isPalindrome(str, s+1, e-1);
+    
+    return true;
 }
 
 void generatePermutation(char* s, int l, int r)
 {
     if(l==r)
     {
-        if(isPalindrome(s))
+        if(isPalindrome(s,0,strlen(s)-1))
         {
             printf("%s\n", s);
             printf("Yes");

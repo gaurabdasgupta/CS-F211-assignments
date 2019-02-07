@@ -25,7 +25,6 @@ int main()
             scanf("%d",&m[i][j]);
 
     f(i,0,n)
-    
         f(j,0,n)
         {
             int t = calcArea(i,j);
