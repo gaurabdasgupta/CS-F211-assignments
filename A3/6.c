@@ -31,7 +31,6 @@ void generatePermutation(char* s, int l, int r)
     {
         if(isPalindrome(s,0,strlen(s)-1))
         {
-            printf("%s\n", s);
             printf("Yes");
             exit(0);
         }

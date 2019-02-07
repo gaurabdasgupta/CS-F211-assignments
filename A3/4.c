@@ -26,7 +26,7 @@ void dfs(int v, int k, int pos)
 
     if(v==k)
         return;
-    // printf("%d ", v);
+
     for(int i=1;i<=n;i++)
         if(g[v][i]&&!vis[i])
             dfs(i, k, pos+1);
@@ -43,7 +43,7 @@ int main()
         g[x][y] = 1;
         g[y][x] = 1;
     }
-    printf("\n");
+
     for(int i=1;i<=n;i++)
     {
         for(int j=1;j<=n;j++)
@@ -52,13 +52,9 @@ int main()
             {
                
                 dfs(i,j,0);
-                // printf("%d\n", j);
-                // printf("%d %d\n", posX, posY);
+
                 if(posX>=posY||(!foundX))
-                {
-                    printf("%d %d\n", i, j);
                     cnt++;
-                }
 
                 memset(vis,0,sizeof(vis));
                 posX = 0;
