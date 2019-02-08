@@ -3,7 +3,7 @@
 #define s(x) scanf("%d", &x)
 #define p(x) printf("%d\n", x)
 #define f(i,x,y) for(int i=x;i<y;i++)
-
+// code O(logn) approach
 int main()
 {
     int n;
@@ -18,5 +18,4 @@ int main()
     }
 
     p(res);
-
 }

@@ -24,14 +24,16 @@ int binSearch(int n, int a[n], int m, int r)
     {
         int mid = (r+l)/2;
         int items = calcItems(n,a,mid);
-        // printf("l: %d r:%d m:%d items:%d\n", l, r, mid, items);
+        printf("l: %d m:%d r:%d items:%d\n", l, mid, r, items);
         if(items<m)
             l = mid+1;
-        else
+        else if(items>m)
             r = mid;
+        else    
+            return mid;
     }
 
-    return r;
+    return -1;
 }
 
 int main()
