@@ -24,6 +24,7 @@ int binSearch(int n, int mx, int height[n], int cost[n])
     {
         int m = (r+l)/2;
 
+        // TODO: mLess, mGreat needed?
         int mLess = (m>0)?findCost(n,height,cost,m-1):INT_MAX;
         int mCost = findCost(n,height,cost,m);
         int mGreat = findCost(n,height,cost,m+1);
