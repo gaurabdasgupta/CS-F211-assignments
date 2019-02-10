@@ -57,7 +57,7 @@ int main()
     f2(i,1,n)
         s(a[i]);
     
-    qsort(a+1,n,sizeof(int),cmp);
+    // qsort(a+1,n,sizeof(int),cmp);
 
     p(maxItems(n,a,budget));
     p(cost);
@@ -66,6 +66,6 @@ int main()
 
 5 25
 5 4 1 2 6
-ans : 3 25
+ans : 3 28 (not sorted)
 
-*/`
+*/
