@@ -17,8 +17,15 @@ int cmp(const void* l, const void* r)
 int calcCost(int n, int a[n], int numItems)
 {
     int cost = 0;
+    int modCost[n];
+
     f2(i,1,numItems)
-        cost += (a[i]+i*numItems);
+        modCost[i] = (a[i]+i*numItems);
+    
+    qsort(modCost,n,sizeof(int),cmp);
+
+    f2(i,1,numItems)
+        cost+=modCost[i];
     
     return cost;
 }
@@ -33,10 +40,7 @@ int maxItems(int n, int a[n], int budget)
     {
         m = (l+r)/2;
 
-        // int costL = calcCost(n,a,m-1);
         cost = calcCost(n,a,m);
-        // int costG = calcCost(n,a,m+1);
-        // p(cost);
         // printf("l:%d m:%d r:%d cost:%d", l, m, r, cost);
 
         if(cost>budget)
@@ -44,7 +48,7 @@ int maxItems(int n, int a[n], int budget)
         else if(cost<=budget)
             l = m+1;
     }
-    // p(cost);
+
     return m;
 }
 
@@ -56,8 +60,6 @@ int main()
     int a[n];
     f2(i,1,n)
         s(a[i]);
-    
-    // qsort(a+1,n,sizeof(int),cmp);
 
     p(maxItems(n,a,budget));
     p(cost);

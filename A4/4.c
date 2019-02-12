@@ -25,17 +25,17 @@ int binSearch(int n, int mx, int height[n], int cost[n])
         int m = (r+l)/2;
 
         // TODO: mLess, mGreat needed?
-        int mLess = (m>0)?findCost(n,height,cost,m-1):INT_MAX;
+        // int mLess = (m>0)?findCost(n,height,cost,m-1):INT_MAX;
         int mCost = findCost(n,height,cost,m);
-        int mGreat = findCost(n,height,cost,m+1);
+        // int mGreat = findCost(n,height,cost,m+1);
 
         printf("m:%d cost:%d\n", m, mCost);
 
-        if (ans == mCost)
-            break;
+        // if (ans == mCost)
+        //     break;
 
-        if(ans>mCost)
-            ans = mCost;
+        // if(ans>mCost)
+        //     ans = mCost;
         if (mLess <= mCost) 
             r = m;
         else if (mGreat <= mCost) 
