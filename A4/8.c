@@ -13,10 +13,21 @@ int binSearch(int n, int a[n], int l, int r, int key)
 
         if(a[m]==key)
             return m;
-        else if(a[m]<key)
-            l = m+1;
+
+        if(a[l]<=a[m])
+        {
+            if(a[l]<=key && key<=a[m])
+                r=m-1;
+            else
+                l=m+1;
+        }
         else
-            r = m-1;
+        {
+            if(a[m]<=key && key<=a[r])
+                l=m+1;
+            else
+                r=m-1;
+        }
     }
 
     return -1;
@@ -33,22 +44,7 @@ int main()
     int key;
     s(key);
     
-    int pivot = 0;
-
-    f2(i,1,n)
-        if(a[i]>a[i+1])
-            pivot = i;
-
-    int ans = binSearch(n,a,1,pivot,key);
-    if(ans == -1)
-    {
-        ans = binSearch(n,a,pivot+1,n,key);
-        if(ans == -1)
-            printf("-1");
-        else
-            p(ans);
-    }
-    else
-        p(ans);
+    int ans = binSearch(n,a,1,n,key);
+    p(ans);
 
 }
