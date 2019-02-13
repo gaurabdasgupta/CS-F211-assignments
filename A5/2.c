@@ -14,6 +14,7 @@ int cmp(const void* l, const void* r)
 {
     int lIndex = a2[*(int*)l];
     int rIndex = a2[*(int*)r];
+
     if(rIndex==INT_MAX&&lIndex==INT_MAX)
         return (*(int*)l - *(int*)r);
 
@@ -26,16 +27,9 @@ int main()
     s(n); s(m);
 
     int a1[n];
-
-    mMx = INT_MIN;
+    
     f1(i,0,n)
-    {
-        int x;
-        s(x);
-        if(x>mMx)
-            mMx = x;
-        a1[i] = x;
-    }
+        s(a1[i]);
 
     f1(i,0,106)
         a2[i]=INT_MAX;
