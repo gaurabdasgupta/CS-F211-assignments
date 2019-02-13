@@ -17,13 +17,17 @@ int binSearch(int n, int a[n], int l, int r, int key)
     while(l<=r)
     {
         int m = (r+l)/2;
-
-        if(a[m]==key)
+        if(key==a[m])
             return m;
-        else if(a[m]<key)
-            l = m+1;
+        if(a[m]>a[m+1]&&key==a[m+1])
+            return m+1;
+        if(a[m]<a[m-1]&&key==a[m-1])
+            return m-1;
+        
+        if(key>a[m])
+            l=m+1;
         else
-            r = m-1;
+            r=m-1;
     }
 
     return -1;
@@ -36,24 +40,25 @@ int main()
     int a[n];
     f2(i,1,n)
         s(a[i]);
-    f2(i,1,n)
-        if(a[i]>a[i+1])
-        {
-            pre = a[i], post = a[i+1];
-            swap(&a[i], &a[i+1]);
-            break;
-        }
+    // f2(i,1,n)
+    //     if(a[i]>a[i+1])
+    //     {
+    //         pre = a[i], post = a[i+1];
+    //         swap(&a[i], &a[i+1]);
+    //         break;
+    //     }
     
     int key;
     s(key);
     int ans = binSearch(n,a,1,n,key);
     
-    if(key==pre)
-        printf("1: %d", ans-1);
-    else if(key==post)
-        printf("2: %d", ans+1);
-    else if(ans!=-1)
+    // if(key==pre)
+    //     printf("1: %d", ans-1);
+    // else if(key==post)
+    //     printf("2: %d", ans+1);
+    // else if(ans!=-1)
+    //     p(ans);
+    // else
+    //     p(-1);
         p(ans);
-    else
-        p(-1);
 }
