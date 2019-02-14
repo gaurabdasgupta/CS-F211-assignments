@@ -6,9 +6,9 @@
 
 int main()
 {
- int n;
+     int n;
     s(n);
-
+    int a[n];
     f(i,0,n)
         s(a[i]);
     
@@ -19,7 +19,7 @@ int main()
     while(l<=r)
     {
         m = (r+l)/2;
-
+        p(1212);
         if(m%2==0)
         {
             if(a[m]==a[m+1])
@@ -41,6 +41,4 @@ int main()
     }
 
     p(a[m]);
-
-
 }

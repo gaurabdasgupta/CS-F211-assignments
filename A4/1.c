@@ -22,7 +22,7 @@ int calcCost(int n, int a[n], int numItems)
     f2(i,1,numItems)
         modCost[i] = (a[i]+i*numItems);
     
-    qsort(modCost,n,sizeof(int),cmp);
+    qsort(modCost+1,n,sizeof(int),cmp);
 
     f2(i,1,numItems)
         cost+=modCost[i];
