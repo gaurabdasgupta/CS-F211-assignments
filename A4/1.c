@@ -41,12 +41,20 @@ int maxItems(int n, int a[n], int budget)
         m = (l+r)/2;
 
         cost = calcCost(n,a,m);
-        // printf("l:%d m:%d r:%d cost:%d", l, m, r, cost);
+        printf("l:%d m:%d r:%d cost:%d\n", l, m, r, cost);
 
         if(cost>budget)
             r = m;
         else if(cost<=budget)
             l = m+1;
+
+    }
+    // p(calcCost(n,a,r));
+    if(calcCost(n,a,r)<=budget)
+    {
+        p(1);
+        cost = budget;
+        return r;
     }
 
     return m;
@@ -64,6 +72,7 @@ int main()
     p(maxItems(n,a,budget));
     p(cost);
 }
+
 /* testcase
 
 5 25
