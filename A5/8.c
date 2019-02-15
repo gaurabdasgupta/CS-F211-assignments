@@ -16,12 +16,13 @@ int cmp(const void* l, const void* r)
 int main()
 {
     int p,x,any;
-
     scanf("%d %d %d", &p, &x, &any);
     int m;
     s(m);
+
     int xb[m],ps[m];
     int k=0,l=0;
+
     f1(i,0,m)
     {
         int v;
@@ -46,13 +47,11 @@ int main()
         num++;
     }
 
-
     while(x-- && xbPtr<l)
     {
         cost+=xb[xbPtr++];
         num++;
     }
-
 
     while(any-- && (psPtr<k||xbPtr<l))
     {
