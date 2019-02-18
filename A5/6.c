@@ -14,7 +14,6 @@ void merge(int n, int a[n], int l, int m, int r)
 {
     int ln = m-l+1;
     int rn = r-m;
-    // int inv=0;
 
     int la[ln],ra[rn];
 

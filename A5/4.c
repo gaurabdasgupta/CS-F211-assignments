@@ -14,7 +14,7 @@ typedef struct pair{
 }ii;
 
 int cmp(const void* l, const void* r)
-{
+{2
     ii* tmp1 = (ii*)l;
     ii* tmp2 = (ii*)r;
     int t = tmp1->val;
