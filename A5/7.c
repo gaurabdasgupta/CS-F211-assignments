@@ -52,7 +52,7 @@ int main()
     int f=0;
     f1(i,0,n)
     {
-        f1(j,i+1,n)
+        f1(j,i+1,n) 
         {
             // printf("%d %d\n",d[i].idx,d[j].idx);
             if(abs(d[i].dist - d[j].dist)==1&&cnt[d[j].dist]>0)
