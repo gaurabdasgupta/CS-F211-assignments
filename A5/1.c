@@ -52,12 +52,29 @@ int main()
 
         qsort(v,n,sizeof(ivl),cmp);
 
-        f1(i,1,n)
+        f1(i,0,n)
         {
-            if(v[i].st<=v[i-1].en)
-                v[i].team = v[i-1].team;
-            else
-                v[i].team = 1 - v[i-1].team;
+            f1(j,0,n)
+            {
+                int f=0;
+                if(i!=j)
+                {
+                    if(v[i].en<v[j].st||v[i].st>v[j].en)
+                    {
+                        v[i].team = 1 - v[j].team;
+                        printf("%d %d\n", i, j);
+                    }
+                    else
+                    {
+                        v[i].team = v[j].team;
+                        // printf("else %d %d\n", i, j);
+                    }
+                }
+            }
+            // if(v[i].st<=v[i-1].en)
+            //     v[i].team = v[i-1].team;
+            // else
+            //     v[i].team = 1 - v[i-1].team;
         }
 
         int f = 0;
