@@ -40,7 +40,6 @@ void merge(int n, int a[n], int l, int m, int r)
 
     while(rp<rn)
         a[k++] = ra[rp++];
-
 }
 
 void mergeSortMod(int n, int a[n], int l, int r)

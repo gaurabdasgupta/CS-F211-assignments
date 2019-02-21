@@ -20,7 +20,7 @@ int cmp(const void* l, const void* r)
     v* t2 = (v*)r;
     int d1 = t1->dist;
     int d2 = t2->dist;
-    // p(d1-d2);
+
     return (d1-d2);
 }
 
@@ -40,10 +40,7 @@ int main()
         x.dist = tmp;
         d[i] = x;
         cnt[tmp]++;
-        // p(11);
     }
-    // f1(i,0,n)
-    //     p(d[i].dist);
 
     qsort(d,n,sizeof(v),cmp);
 
@@ -54,12 +51,11 @@ int main()
     {
         f1(j,i+1,n) 
         {
-            // printf("%d %d\n",d[i].idx,d[j].idx);
             if(abs(d[i].dist - d[j].dist)==1&&cnt[d[j].dist]>0)
             {
                 printf("fnd: %d %d\n",d[i].idx,d[j].idx);
                 cnt[d[j].dist]--;
             }   
-        }
+        } // todo: cycle
     }
 }

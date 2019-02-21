@@ -26,7 +26,6 @@ int main()
     qsort(a,n,sizeof(int),cmp);
 
     int ans=INT_MAX;
-    int i;
     f1(i,0,n)
     {
         if(a[i]==a[i+1])
