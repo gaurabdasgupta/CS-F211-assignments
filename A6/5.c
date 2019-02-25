@@ -41,25 +41,27 @@ void printList(node* head)
     printf("\n");
 }
 
-void merge(node* h1, node* h2)
+node* merge(node* h1, node* h2)
 {
-    node* head;
-    node* trv1;
-    node* trv2;
-    if(h1->data<*h2->data)
+    node* ans;
+
+    if(!h1)
+        return h1;
+    if(!h2)
+        return h2;
+    
+    if(h1->val<=h2->val)
     {
-        head = h1;
-        trv1 = h1->next;
-        trv2 = h2;
+        ans = h1;
+        ans->next = merge(h1->next, h2);
     }
     else
     {
-        head = h2;
-        trv2 = h2->next;
-        trv1 = h1;
+        ans = h2;
+        ans->next = merge(h1, h2->next);
     }
 
-    while()
+    return ans;
 
 }
 
@@ -89,6 +91,6 @@ int main()
     // printList(h1);
     // printList(h2);
 
-    // merge(&h1, &h2);
+    printList(merge(h1, h2));
 
 }
