@@ -17,7 +17,7 @@ int main()
         p(-1);
     int dp[76];
     for(int i=1;i<=6;i++)
-        dp[i] = i;
+        dp[i] = i;  
     
     for(int i=7;i<=n;i++)
     {

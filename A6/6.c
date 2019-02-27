@@ -37,30 +37,36 @@ int main()
     char str[100];
     scanf("%s", str);
     int n = strlen(str);
-
+    char ans[100];
+    strcpy(ans,"a");
     for (int len = 1; len <= n; len++)  
     {     
-
+        char substr[100];
         for (int i = 0; i <= n - len; i++)  
-        {  
+        {
             int j = i + len - 1;
-            char substr[j];
-            int idx = 0;            
+            int idx = 0; 
+            char substr[100];          
             for (int k = i; k <= j; k++)
-            {
                 substr[idx++] = str[k];
-                printf("%s", substr);
-                //  if(isPalin(substr,0,strlen(substr)-1)&&check(substr))
-                // {
-                //     if(strcmp(substr,ans)<0)
-                //         strcpy(ans,substr);
-                // }
-                
-            } 
-            printf("\n");
+            
+            // printf("%s\n", substr);
+            if(isPalin(substr,0,strlen(substr)-1)&&check(substr))
+            {
+            
+                    // printf("%s\n", substr);
+                if(strlen(substr)>strlen(ans))
+                    strcpy(ans, substr);
+                else if(strlen(substr)==strlen(ans))
+                {
+                    if(strcmp(substr, ans)<0)
+                        strcpy(ans, substr);
+                }
+                // printf("%s\n",ans);
+            }
         } 
     } 
 
-    // printf("%s", ans);
+    printf("%s", ans);
 
 }
