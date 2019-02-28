@@ -1,6 +1,8 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include<stdio.h>
+#define min(a,b) ((a)<(b)?(a):(b))
+
 int i,n,k,s,t,l=1,r=1e9+5,mid,d,cost=INT_MAX,g[200005],v[200005],c[200005];
+
 bool can(int x)
 {
 	long sum=0;
@@ -13,9 +15,10 @@ bool can(int x)
 	}
 	return sum<=t;
 }
+
 int main()
 {
-	cin>>n>>k>>s>>t;
+	scanf("%d %d %d %d", &n, &k, &s, &t);
 	for(i=1;i<=n;i++)
 		scanf("%d%d",c+i,v+i);
 	for(i=1;i<=k;i++)
@@ -32,7 +35,7 @@ int main()
             l=mid+1;
 	}
 	if (!can(l))
-		return cout<<"-1",0;
+		return printf("-1"),0;
 	else
     {
         for(i=1;i<=n;i++)
@@ -40,6 +43,6 @@ int main()
 				cost=min(cost,c[i]);
 		if (cost==INT_MAX)
 			cost=-1;
-		cout<<cost;
+		printf("%d", cost);
 	}
 }
