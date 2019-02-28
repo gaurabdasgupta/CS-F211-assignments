@@ -1,73 +1,45 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-int n,k,s,t;
-int cmpfunc(const void *a , const void* b)
+#include <bits/stdc++.h>
+using namespace std;
+int i,n,k,s,t,l=1,r=1e9+5,mid,d,cost=INT_MAX,g[200005],v[200005],c[200005];
+bool can(int x)
 {
-	return *(int*)a-*(int*)b ;
-}
-
-int check(int f ,int g[],int t)
-{
-	int time = 0;
-	for(int i=0; i < k+1 ; ++i)
+	long sum=0;
+	for(i=1;i<=k;i++)
     {
-		int d = g[i+1]-g[i];
-		if(d > f) 
-            return 0;
-		if(f>=2*d) 
-            time += d;
-		else 
-            time += 2*d - (f-d);
-
+		d=g[i]-g[i-1];
+		if (d>x)
+			return false;
+		sum=sum+d+max(2*d-x,0);
 	}
-	if(time<=t) 
-        return 1;
-	return 0;
+	return sum<=t;
 }
-
-int min(int a,int b){
-	return a<=b?a:b;
-}
-
 int main()
 {
-	scanf("%d %d %d %d" , &n , &k , &s , &t);
-	int car[n][2];
-	int g[k+2];
-	g[k] = 0;
-	g[k+1] = s;
-
-	for(int i=0;i<n;++i)
-		scanf("%d %d",&car[i][0] , &car[i][1]);
-
-	for(int i=0;i < k ; ++i)
-		scanf("%d",&g[i]);
-    
-	qsort(g,k+2,sizeof(int),cmpfunc);
-	int lo = 1;
-	int hi = 1e9+3;
-	int mid;
-	while(lo<=hi)
+	cin>>n>>k>>s>>t;
+	for(i=1;i<=n;i++)
+		scanf("%d%d",c+i,v+i);
+	for(i=1;i<=k;i++)
+		scanf("%d",g+i);
+	g[0]=0;
+	g[++k]=s;
+	sort(g,g+k+1);
+	while(l<r)
     {
-		if(lo==hi)
-            break;
-		mid = (lo+hi)/2;
-		if(check(mid,g,t)) 
-            hi = mid;
-		else 
-            lo = mid+1;
+		mid=(l+r)/2;
+		if(can(mid))
+			r=mid;
+		else
+            l=mid+1;
 	}
-	
-	int ans = 1e9+3;
-	for(int i=0; i < n ; ++i)
-		if(car[i][1]>=hi) 
-            ans = min(ans,car[i][0]);
-
-	if(ans==1e9+3){
-		printf("%d\n", -1);
-		return 0;
+	if (!can(l))
+		return cout<<"-1",0;
+	else
+    {
+        for(i=1;i<=n;i++)
+			if(v[i]>=l)
+				cost=min(cost,c[i]);
+		if (cost==INT_MAX)
+			cost=-1;
+		cout<<cost;
 	}
-
-	printf("%d\n",ans );
 }

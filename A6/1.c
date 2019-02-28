@@ -1,50 +1,60 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<limits.h>
 #include<string.h>
 
-#define s(x) scanf("%d", &x)
-#define p(x) printf("%d ", x)
-#define f1(i,x,y) for(int i=x;i<y;i++)
-#define f2(i,x,y) for(int i=x;i<=y;i++)
+#define s(x) scanf("%d", &x);
+#define p(x) printf("%d\n", x);
+#define p2(x, y) printf("%d %d\n", x, y);
 
-typedef struct n{
-    int val;
-    int idx;
-}ii;
-
-int main()
-{
-    int n;
-    s(n);
-    ii v[n];
-    f1(i,0,n)
-    {
-        int x;
-        s(x);
-        ii t;
-        t.val = x;
-        t.idx = i;
-    }
-
-    int a[n][n];
-
-    f1(i,0,n)
-        f1(j,0,n)
-            s(a[i][j]);
-
-    qsort(v, n, sizeof(ii), cmp);
-
-    f1(i,0,n)
-    {
-        if(v[i].idx==i)
-            continue;
-        else
-        {
-            swap(&v[i].val, &v[v[i].idx].val);
-            swap(&v[i].idx, &v[v[i].idx].idx);
-        }
-        ans++;
-    }
+int swap(int *a, int *b){
+	 int temp = *a;
+	 *a = *b;
+	 *b = temp;
 }
 
+int g[10][10];
+
+int main(){
+	int n;
+	s(n);
+	int arr[n], g[n][n];
+	for (int i = 0; i < n; ++i)
+	{
+		s(arr[i])
+		/* code */
+	}
+	
+	for (int i = 0; i < n; ++i)
+	{
+		for(int j = 0; j< n; j++){
+			s(g[i][j])
+			// p(g[i][j])
+		}
+		/* code */
+	}
+	for (int i = 0; i < n; ++i)
+	{
+		for(int j = 0; j< n; j++){
+			if(g[i][j]==1 && (arr[j]<arr[i] && j>i))
+				swap(&arr[i], &arr[j]);
+							
+		}
+	}
+	for (int i = 0; i < n; ++i)
+	{
+		printf("%d ", arr[i]);
+		/* code */
+	}
+}
+
+/*
+7
+5 2 4 3 6 7 1
+0 0 0 1 0 0 1
+0 0 0 0 0 0 0
+0 0 0 1 0 1 0 
+1 0 1 0 0 0 1
+0 0 0 0 0 0 0
+0 0 1 0 0 0 0
+1 0 0 1 0 0 0
+*/

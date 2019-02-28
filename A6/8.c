@@ -53,9 +53,7 @@ int main()
     f1(i,0,rowN)
         f1(j,0,colN)
             scanf(" %c", &mat[i][j]);
-    // f1(i,0,rowN)
-    //     f1(j,0,colN)
-    //         printf("%c ", mat[i][j]);
+
     int t;
     s(t);
     f1(i,0,t)

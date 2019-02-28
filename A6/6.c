@@ -49,12 +49,9 @@ int main()
             char substr[100];          
             for (int k = i; k <= j; k++)
                 substr[idx++] = str[k];
-            
-            // printf("%s\n", substr);
+                
             if(isPalin(substr,0,strlen(substr)-1)&&check(substr))
             {
-            
-                    // printf("%s\n", substr);
                 if(strlen(substr)>strlen(ans))
                     strcpy(ans, substr);
                 else if(strlen(substr)==strlen(ans))
@@ -62,7 +59,6 @@ int main()
                     if(strcmp(substr, ans)<0)
                         strcpy(ans, substr);
                 }
-                // printf("%s\n",ans);
             }
         } 
     } 
