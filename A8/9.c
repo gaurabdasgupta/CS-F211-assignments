@@ -44,20 +44,21 @@ int main()
   scanf("%d", &n);
   int a[n];
   for(int i=0;i<n;i++)
-  {
     scanf("%d", &a[i]);
-  }
+
   int sum = 0;
   int diff;
-  for (int i = 0; i < n; i++) {
-        if (idx>0 && getMin() < a[i]) {
-            diff = a[i] - getMin();
-            sum += diff;
-            pop();
-            insert(a[i]);
-        }
-        insert(a[i]);
+  for (int i = 0; i < n; i++) 
+  {
+    if (idx>0 && getMin() < a[i]) 
+    {
+      diff = a[i] - getMin();
+      sum += diff;
+      pop();
+      // insert(a[i]);
     }
+    insert(a[i]);
+  }
 
     printf("%d\n",sum);
 }

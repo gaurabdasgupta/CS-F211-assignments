@@ -22,8 +22,8 @@ int main()
     for(i=0;i<n-2;i++)
       a[i]=a[i+2];
     a[i++] = swt;
-    res+=swt; 
+    res+=swt;
     cnt++;
   }
-  printf("%d\n",cnt );
+  printf("%d\n",cnt);
 }

@@ -67,48 +67,48 @@ int main()
 
     for(int i=1;i<n;i++)
     {
-        double x = stream[i];
+      double x = stream[i];
 
-        if(maxIdx > minIdx)
+      if(maxIdx > minIdx)
+      {
+        if(x<med)
         {
-            if(x<med)
-            {
-                insertMin(getMax());
-                popMax();
-                insertMax(x);
-            }
-            else
-                insertMin(x);
-            
-            med = (getMax()+getMin())/2.0;
-        }
-        else if(maxIdx < minIdx)
-        {
-            if(x<med)
-            {
-                insertMax(getMin());
-                popMin();
-                insertMin(x);
-            }
-            else
-                insertMax(x);
-            
-            med = (getMax()+getMin())/2.0;
+            insertMin(getMax());
+            popMax();
+            insertMax(x);
         }
         else
-        {
-            if(x<med)
-            {
-                insertMax(x);
-                med = getMax();
-            }
-            else
-            {
-                insertMin(x);
-                med = getMin();
-            }
-        }
+            insertMin(x);
+        
+        med = (getMax()+getMin())/2.0;
+      }
+      else if(maxIdx < minIdx)
+      {
+          if(x<med)
+          {
+              insertMax(getMin());
+              popMin();
+              insertMin(x);
+          }
+          else
+              insertMax(x);
+          
+          med = (getMax()+getMin())/2.0;
+      }
+      else
+      {
+          if(x<med)
+          {
+              insertMax(x);
+              med = getMax();
+          }
+          else
+          {
+              insertMin(x);
+              med = getMin();
+          }
+      }
 
-        printf("%lf\n", med);
+      printf("%lf\n", med);
     }
 }

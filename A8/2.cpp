@@ -56,13 +56,14 @@ int main()
 	{
 		ab = pro[i-1].ct;
 		sort(pro+i,pro+n,compare2);
+
 		if(pro[i-1].ct < pro[i].at)
 			pro[i].ct = pro[i-1].ct + pro[i].bt + (pro[i].at - pro[i-1].ct);
 		else
 			pro[i].ct = pro[i-1].ct + pro[i].bt;
 
 		pro[i].ta = pro[i].ct - pro[i].at;
-		pro[i].wt = pro[i].ta - pro[i].bt;
+		// pro[i].wt = pro[i].ta - pro[i].bt;
 	}
 
 	for(i=0;i<n;i++)

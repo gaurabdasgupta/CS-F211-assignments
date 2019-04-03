@@ -54,17 +54,19 @@ int main()
   scanf("%s", str);
   head = createNode(str[0]);
   size++;
+
   for(int i=1;i<strlen(str);i++)
   {
-      if(size>0 && str[i] == findClosing(top()))
-        pop();
-      else
-        push(str[i]);
+    if(size>0 && str[i] == findClosing(top()))
+      pop();
+    else
+      push(str[i]);
   }
+
   printf("%d\n",size );
+
   if(size==0)
     printf("valid\n");
   else
     printf("invalid\n");
-
 }
